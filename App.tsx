@@ -65,9 +65,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50 text-slate-800 font-sans flex-col-reverse md:flex-row overflow-hidden">
+    <div className="flex h-screen bg-slate-50 text-slate-800 font-sans flex-col md:flex-row overflow-hidden">
       {/* Sidebar / Bottom Menu */}
-      <aside className="w-full md:w-72 bg-slate-900 text-white flex md:flex-col flex-row justify-between md:justify-start shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.3)] md:shadow-2xl transition-all duration-300 z-30 shrink-0 h-[72px] md:h-auto">
+      {/* Mobile: Fixed position at bottom. Desktop: Relative flex item. */}
+      <aside className="fixed bottom-0 left-0 w-full h-[72px] z-50 bg-slate-900 text-white flex flex-row justify-between shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.3)] transition-all duration-300 md:relative md:w-72 md:h-auto md:flex-col md:justify-start md:shadow-2xl md:z-30 md:static">
         
         {/* Desktop Logo */}
         <div className="hidden md:flex h-20 items-center px-8 border-b border-slate-800 shrink-0">
@@ -127,7 +128,7 @@ const App: React.FC = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col overflow-hidden bg-slate-50 h-full relative">
+      <main className="flex-1 flex flex-col overflow-hidden bg-slate-50 h-full relative pb-[72px] md:pb-0">
         <header className="h-16 md:h-20 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 shadow-sm z-10 shrink-0">
           <div className="flex items-center">
               {/* Mobile Logo */}
