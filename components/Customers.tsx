@@ -38,7 +38,7 @@ const Customers: React.FC<CustomersProps> = ({ customers, addCustomer, updateCus
           <thead className="bg-slate-50/80 text-slate-500 uppercase text-xs font-bold tracking-wider">
             <tr>
               <th className="p-4 border-b border-slate-100">Company Name</th>
-              <th className="p-4 border-b border-slate-100">Contact Number</th>
+              <th className="p-4 border-b border-slate-100">Email Contact</th>
               <th className="p-4 border-b border-slate-100">Status</th>
               <th className="p-4 border-b border-slate-100 text-center">Quick Actions</th>
             </tr>
@@ -47,7 +47,7 @@ const Customers: React.FC<CustomersProps> = ({ customers, addCustomer, updateCus
             {customers.map(customer => (
               <tr key={customer.id} className="hover:bg-slate-50/80 transition-colors">
                 <td className="p-4 font-semibold text-slate-700">{customer.name}</td>
-                <td className="p-4 text-slate-600">{customer.number}</td>
+                <td className="p-4 text-slate-600">{customer.email}</td>
                 <td className="p-4">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ring-1 ring-inset ${statusStyles[customer.status]}`}>
                     {customer.status}

@@ -20,7 +20,7 @@ export enum PaymentStatus {
 export interface Customer {
   id: string;
   name: string;
-  number: string;
+  email: string;
   status: CustomerStatus;
 }
 

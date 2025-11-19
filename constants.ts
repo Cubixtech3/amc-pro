@@ -8,10 +8,10 @@ export const NAV_ITEMS = [
 ];
 
 export const MOCK_CUSTOMERS: Customer[] = [
-  { id: 'CUST1', name: 'Innovate Corp', number: '555-0101', status: CustomerStatus.Active },
-  { id: 'CUST2', name: 'Solutions Inc.', number: '555-0102', status: CustomerStatus.Active },
-  { id: 'CUST3', name: 'Tech Giants LLC', number: '555-0103', status: CustomerStatus.Inactive },
-  { id: 'CUST4', name: 'Synergy Partners', number: '555-0104', status: CustomerStatus.Blocked },
+  { id: 'CUST1', name: 'Innovate Corp', email: 'contact@innovate.com', status: CustomerStatus.Active },
+  { id: 'CUST2', name: 'Solutions Inc.', email: 'support@solutions.com', status: CustomerStatus.Active },
+  { id: 'CUST3', name: 'Tech Giants LLC', email: 'admin@techgiants.com', status: CustomerStatus.Inactive },
+  { id: 'CUST4', name: 'Synergy Partners', email: 'hello@synergy.com', status: CustomerStatus.Blocked },
 ];
 
 const createRenewalDate = (startDate: Date, months: number): string => {
