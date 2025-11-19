@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Customer, CustomerStatus } from '../types';
+import CreateCustomerModal from './CreateCustomerModal';
 
 interface CustomersProps {
   customers: Customer[];
@@ -13,8 +14,9 @@ const statusStyles: { [key in CustomerStatus]: string } = {
   [CustomerStatus.Blocked]: 'bg-red-50 text-red-600 border-red-100 ring-red-500/20',
 };
 
-const Customers: React.FC<CustomersProps> = ({ customers, updateCustomer }) => {
-    
+const Customers: React.FC<CustomersProps> = ({ customers, addCustomer, updateCustomer }) => {
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
   const handleStatusChange = (customer: Customer, newStatus: CustomerStatus) => {
     updateCustomer({ ...customer, status: newStatus });
   };
@@ -23,7 +25,10 @@ const Customers: React.FC<CustomersProps> = ({ customers, updateCustomer }) => {
     <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/60">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-xl font-bold text-slate-800">Customer Database</h3>
-        <button className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition shadow-md shadow-primary-500/30 font-medium text-sm">
+        <button 
+            onClick={() => setIsCreateModalOpen(true)}
+            className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition shadow-md shadow-primary-500/30 font-medium text-sm"
+        >
             + New Customer
         </button>
       </div>
@@ -33,7 +38,7 @@ const Customers: React.FC<CustomersProps> = ({ customers, updateCustomer }) => {
           <thead className="bg-slate-50/80 text-slate-500 uppercase text-xs font-bold tracking-wider">
             <tr>
               <th className="p-4 border-b border-slate-100">Company Name</th>
-              <th className="p-4 border-b border-slate-100">Email Contact</th>
+              <th className="p-4 border-b border-slate-100">Contact Number</th>
               <th className="p-4 border-b border-slate-100">Status</th>
               <th className="p-4 border-b border-slate-100 text-center">Quick Actions</th>
             </tr>
@@ -42,7 +47,7 @@ const Customers: React.FC<CustomersProps> = ({ customers, updateCustomer }) => {
             {customers.map(customer => (
               <tr key={customer.id} className="hover:bg-slate-50/80 transition-colors">
                 <td className="p-4 font-semibold text-slate-700">{customer.name}</td>
-                <td className="p-4 text-slate-600">{customer.email}</td>
+                <td className="p-4 text-slate-600">{customer.number}</td>
                 <td className="p-4">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ring-1 ring-inset ${statusStyles[customer.status]}`}>
                     {customer.status}
@@ -72,6 +77,13 @@ const Customers: React.FC<CustomersProps> = ({ customers, updateCustomer }) => {
           </tbody>
         </table>
       </div>
+      
+      {isCreateModalOpen && (
+        <CreateCustomerModal 
+            onClose={() => setIsCreateModalOpen(false)} 
+            onSubmit={addCustomer}
+        />
+      )}
     </div>
   );
 };
