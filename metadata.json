@@ -1,0 +1,5 @@
+{
+  "name": "AMC Manager Pro",
+  "description": "An internal tool to manage Annual Maintenance Contracts (AMCs), track renewals, handle customer statuses, and generate invoices and reminder emails.",
+  "requestFramePermissions": []
+}
